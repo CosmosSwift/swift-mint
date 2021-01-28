@@ -18,7 +18,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://gitlab.com/katalysis/open-source/HexString.git", from: "0.4.0"),
+        .package(url: "https://github.com/katalysis-io/swift-hex-string.git", from: "0.4.0"),
         .package(url: "https://github.com/apple/swift-crypto", .upToNextMinor(from: "1.0.0")),
     ],
     targets: [
