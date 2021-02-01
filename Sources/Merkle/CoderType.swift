@@ -18,17 +18,17 @@ import Foundation
 
 // TODO: implement using Codable and use swift-amino as implementation
 public protocol CoderType {
-    static func encode(_ data: Data) -> Data
+    static func encode(_ object: Data) throws -> Data
 
     static func mustMarshalBinaryLengthPrefixed<ProofOperator: ProofOperatorProtocol>(_ pop: ProofOperator) -> Data
 }
 
 public struct SimpleCodec: CoderType {
-    public static func encode(_ data: Data) -> Data {
+    public static func encode(_ object: Data) throws -> Data {
         var res = Data()
-        let varint = varintEncode(data.count)
+        let varint = varintEncode(object.count)
         res.append(contentsOf: varint)
-        res.append(contentsOf: data)
+        res.append(contentsOf: object)
         return res
     }
 

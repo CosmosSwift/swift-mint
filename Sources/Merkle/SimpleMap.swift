@@ -42,8 +42,8 @@ public struct SimpleMap<Hash: HashType, Codec: CoderType> {
 
         var encoded: Data {
             var res = Data()
-            res.append(contentsOf: Codec.encode(k))
-            res.append(contentsOf: Codec.encode(v.data))
+            res.append(contentsOf: (try? Codec.encode(k)) ?? Data())
+            res.append(contentsOf: (try? Codec.encode(v.data)) ?? Data())
             return res
         }
     }

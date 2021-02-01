@@ -36,8 +36,8 @@ public struct SimpleValueOp<Hash: HashType, Codec: CoderType>: ProofOperatorProt
 
         // Wrap <op.Key, vhash> to hash the KVPair.
         var encoded = Data()
-        encoded.append(contentsOf: Codec.encode(key))
-        encoded.append(contentsOf: Codec.encode(vhash.data))
+        encoded.append(contentsOf: (try? Codec.encode(key)) ?? Data())
+        encoded.append(contentsOf: (try? Codec.encode(vhash.data)) ?? Data())
 
         let kvhash = Hash.leafHash(encoded)
 
