@@ -48,7 +48,7 @@ public struct SimpleValueOp<Hash: HashType, Codec: CoderType>: ProofOperatorProt
         return [Data(try proof.computeRootHash().value)]
     }
 
-    public let type: String = "SimpleValueOp"
+    public var type: String { "SimpleValueOp" }
 
 //    public var data: Data? {
 //        get {

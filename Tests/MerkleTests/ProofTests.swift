@@ -36,7 +36,7 @@ struct DominoOp: ProofOperatorProtocol {
     public func run(_ data: [Data]) throws -> [Data] {
         guard data.count == 1 else { throw CosmosSwiftError.general("expected input of length 1") }
 
-        if data[0] != self.data { throw CosmosSwiftError.general("expected input \(self.data), got \(data[0])") }
+        if data[0] != self.data { throw CosmosSwiftError.general("expected input \(String(describing: self.data)), got \(data[0])") }
 
         return [output]
     }

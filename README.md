@@ -1,7 +1,3 @@
-<table><thead><tr align="center"><th width="9999">
-The <a href="https://github.com/katalysis-io/cosmosswift" rel="nofollow noreferrer noopener" target="_blank">GitHub repository</a> is a <b>read-only</b> mirror of the GitLab repository. For issues and merge requests, <a href="https://github.com/cosmosswift/swift-mint" rel="nofollow noreferrer noopener" target="_blank">please visit GitLab</a>.
-</th></tr></thead></table>
-
 # CosmosSwift
 
 ![Swift5.2+](https://img.shields.io/badge/Swift-5.2+-blue.svg)

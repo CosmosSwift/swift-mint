@@ -1,10 +1,9 @@
-// swift-tools-version:5.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.4
 
 import PackageDescription
 
 let package = Package(
-    name: "SwiftMint",
+    name: "swift-mint",
     platforms: [
         .macOS(.v10_15),
         .iOS(.v13),
@@ -12,19 +11,20 @@ let package = Package(
         .tvOS(.v13),
     ],
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(name: "Merkle", targets: ["Merkle"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/katalysis-io/swift-hex-string.git", from: "0.4.0"),
-        .package(url: "https://github.com/apple/swift-crypto", .upToNextMinor(from: "1.0.0")),
+        .package(name: "swift-hex-string", url: "https://github.com/CosmosSwift/swift-hex-string.git", from: "1.0.0"),
+        .package(name: "swift-crypto", url: "https://github.com/apple/swift-crypto", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(name: "Merkle", dependencies: ["HexString", "Crypto"]),
+        .target(
+            name: "Merkle",
+            dependencies: [
+                .product(name: "HexString", package: "swift-hex-string"),
+                .product(name: "Crypto", package: "swift-crypto"),
+            ]
+        ),
         .testTarget(name: "MerkleTests", dependencies: ["Merkle"]),
     ]
 )
